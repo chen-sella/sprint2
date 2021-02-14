@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ac169b3c0f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Meme-Generator</title>
+</head>
+
+<body class="gallary" onload="init()">
+    <div class="main-screen" onclick="toggleMenu()"></div>
+    <header class="nav-container flex align-center space-between">
+        <div class="logo">MemeGen<span>.</span></div>
+        <nav class="nav-content">
+            <ul class="nav-list clean-list flex">
+                <li>
+                    <a onclick="showMemesGallary()">Gallary</a>
+                </li>
+                <li>
+                    <a onclick="showMemesHistory()">Memes</a>
+                </li>
+                <li>
+                    <a href="#about">About</a>
+                </li>
+            </ul>
+        </nav>
+        <button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars "></i></button>
+    </header>
+    <section class="search-bar">
+        <input type="text" placeholder="Search.." onkeyup="onFilter(this.value)">
+        <i class="fas fa-search"></i>
+        <input type="file" name="image" onchange="onImgInput(event)">
+    </section>
+    <main>
+        <section class="main image-gallary">
+            <div class="grid-container">
+            </div>
+        </section>
+        <div class="main meme-editor-panel">
+            <div class="canvas-container">
+                <canvas id="meme-canvas" height="400" width="400" onclick="canvasClicked(event)">
+                </canvas>
+            </div>
+            <div class="control-panel flex justify-center">
+                <input id="input-0" class="text-input" placeholder="Insert Text" type="text" oninput="onTyping(this.value)">
+                <div class="editor-btns flex align-center">
+                    <div class="btns-first-line control-line-container flex justify-center align-center">
+                        <button class="editor-btn-icon" onclick="onChangeFocus()"><i
+                                class="fas fa-exchange-alt fa-2x fa-rotate-90"></i></button>
+                        <button class="editor-btn-icon" onclick="onAddTextLine()"><i
+                                class="fas fa-plus fa-2x"></i></button>
+                        <button class="editor-btn-icon" onclick="onClearLine()"><i
+                                class="fas fa-trash fa-2x"></i></button>
+                    </div>
+                    <div class="btns-second-line control-line-container flex">
+                        <button class="editor-btn-icon" onclick="onLineUp()"><i
+                                class="fas fa-arrow-up fa-2x"></i></button>
+                        <button class="editor-btn-icon" onclick="onLineDown()"><i
+                                class="fas fa-arrow-down fa-2x"></i></button>
+                        <img name="increase" src="ICONS/increase font - icon.png" class="editor-btn-icon"
+                            onclick="onChangeFont(this.name)"></button>
+                        <img name="decrease" src="ICONS/decrease font - icon.png" class="editor-btn-icon"
+                            onclick="onChangeFont(this.name)"></button>
+                        <button name="left" class="editor-btn-icon" onclick="onChangeAlignment(this.name)"><i
+                                class="fas fa-align-left fa-2x"></i></button>
+                        <button name="center" class="editor-btn-icon" onclick="onChangeAlignment(this.name)"><i
+                                class="fas fa-align-center fa-2x"></i></button>
+                        <button name="right" class="editor-btn-icon" onclick="onChangeAlignment(this.name)"><i
+                                class="fas fa-align-right fa-2x"></i></button>
+                        <label>
+                            <img for="stroke-color" src="ICONS/text stroke.png" class="editor-btn-icon"/>
+                            <input hidden type="color" id="stroke-color" name="head"value="#e66465">
+                        </label>
+                        <img src="ICONS/paint-board-and-brush.png" class="editor-btn-icon">
+                    </div>
+                    <div class="btns-third-line control-line-container  flex">
+                        <a class="meme-actions" href="#" onclick="onDownloadCanvas(this)">Download</a>
+                        <a class="meme-actions" href="#" onclick="onSaveMeme(this)">Save</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <section id="about" class="about-container flex justify-center align-center">
+        <img class="about-img" src="me.jpg">
+        <div class="about-text-container flex ">
+            <p class="about-name">Chen Sella</p>
+            <p class="about-details">My name is Chen, I'm 28 Years Old and i live in Tel Aviv, Israel. I'm a graduate of
+                the Faculty
+                of Mechanical Engineering from Tel Aviv University. Passionate about Web design, love taking on new
+                challenges and
+                exploring different fields. I live from one adventure to another, love to travel and playing the piano.
+            </p>
+            <section class="socials">
+                <ul class="social-buttons clean-list flex">
+                    <li class="social-item">
+                        <a href="https://www.instagram.com/chen.sella/?hl=en" target="_blank">
+                            <i class="fab fa-instagram-square fa-2x"></i>                </a>
+                    </li>
+                    <li class="social-item">
+                        <a href="https://www.facebook.com/chen.sella/" target="_blank">
+                            <i class="fab fa-facebook-square fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="social-item">
+                        <a href="https://www.linkedin.com/in/chen-sella-855b28168/" target="_blank">
+                            <i class="fab fa-linkedin fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </section>
+    <section class="saved-memes">
+
+    </section>
+    <footer class="main-footer flex align-center justify-center">
+        <p class="logo">MemeGen<span>.</span></p>
+        <p>all rights reserved 2021</p>
+    </footer>
+    <script src="js/storage-service.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+</body>
+
+</html>
