@@ -4,7 +4,6 @@ var gElCanvas;
 var gCtx;
 var gStorageMeme = loadFromStorage(gKey);
 var gCurrLineIdx;
-const gTouchEvs = ['touchstart', 'touchmove', 'touchend'];
 var gElBody;
 var gCurrImgs;
 var gImg;
